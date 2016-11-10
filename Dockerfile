@@ -15,18 +15,18 @@ RUN yum -y install epel-release
 RUN yum -y install wget tar rpm-build rpmdevtools gcc cmake make libuuid-devel openssl-devel swig python-devel epydoc doxygen cyrus-sasl.x86_64 cyrus-sasl-devel.x86_64 cyrus-sasl-plain.x86_64 cyrus-sasl-md5.x86_64 createrepo ncftp
 
 # Install Qpid Proton dependency
-RUN wget http://repo.effectivemessaging.com/qpid-proton-testing.repo -P /etc/yum.repos.d
+RUN wget http://repo.effectivemessaging.com/qpid-proton-stable.repo -P /etc/yum.repos.d
 RUN yum -y install qpid-proton-c qpid-proton-c-devel python-qpid-proton
 
 # Create the RPMs
 RUN rpmdev-setuptree
 ADD ./qpid-dispatch.spec /root/rpmbuild/SPECS/qpid-dispatch.spec
 WORKDIR /root/rpmbuild/SOURCES
-RUN wget https://github.com/apache/qpid-dispatch/archive/0.7.0-rc1.tar.gz
-RUN tar -xf 0.7.0-rc1.tar.gz
-RUN mv qpid-dispatch-0.7.0-rc1/ qpid-dispatch-0.7.0/
+RUN wget https://github.com/apache/qpid-dispatch/archive/0.7.0-rc2.tar.gz
+RUN tar -xf 0.7.0-rc2.tar.gz
+RUN mv qpid-dispatch-0.7.0-rc2/ qpid-dispatch-0.7.0/
 RUN tar -z -cf qpid-dispatch-0.7.0.tar.gz qpid-dispatch-0.7.0/
-RUN rm -rf 0.7.0-rc1.tar.gz qpid-dispatch-0.7.0-rc1/
+RUN rm -rf 0.7.0-rc2.tar.gz qpid-dispatch-0.7.0-rc2/
 ADD ./0001-NO-JIRA-Systemd-control-file-for-qdrouterd.patch /root/rpmbuild/SOURCES/0001-NO-JIRA-Systemd-control-file-for-qdrouterd.patch
 ADD ./0002-NO-JIRA-new-SysVInit-script-for-qdrouterd-from-Alan-.patch /root/rpmbuild/SOURCES/0002-NO-JIRA-new-SysVInit-script-for-qdrouterd-from-Alan-.patch
 WORKDIR /root/rpmbuild/SPECS
