@@ -22,12 +22,8 @@ RUN yum -y install qpid-proton-c qpid-proton-c-devel python-qpid-proton
 RUN rpmdev-setuptree
 ADD ./qpid-dispatch.spec /root/rpmbuild/SPECS/qpid-dispatch.spec
 WORKDIR /root/rpmbuild/SOURCES
-RUN wget https://github.com/apache/qpid-dispatch/archive/0.7.0-rc2.tar.gz
-RUN tar -xf 0.7.0-rc2.tar.gz
-RUN mv qpid-dispatch-0.7.0-rc2/ qpid-dispatch-0.7.0/
-RUN tar -z -cf qpid-dispatch-0.7.0.tar.gz qpid-dispatch-0.7.0/
-RUN rm -rf 0.7.0-rc2.tar.gz qpid-dispatch-0.7.0-rc2/
-ADD ./0001-NO-JIRA-Systemd-control-file-for-qdrouterd.patch /root/rpmbuild/SOURCES/0001-NO-JIRA-Systemd-control-file-for-qdrouterd.patch
+RUN wget http://apache.miloslavbrada.cz/qpid/dispatch/0.7.0/qpid-dispatch-0.7.0.tar.gz
+DD ./0001-NO-JIRA-Systemd-control-file-for-qdrouterd.patch /root/rpmbuild/SOURCES/0001-NO-JIRA-Systemd-control-file-for-qdrouterd.patch
 ADD ./0002-NO-JIRA-new-SysVInit-script-for-qdrouterd-from-Alan-.patch /root/rpmbuild/SOURCES/0002-NO-JIRA-new-SysVInit-script-for-qdrouterd-from-Alan-.patch
 WORKDIR /root/rpmbuild/SPECS
 RUN rpmbuild -ba qpid-dispatch.spec
@@ -42,8 +38,8 @@ WORKDIR /root/repo/CentOS/7/x86_64/
 RUN createrepo .
 WORKDIR /root/repo/CentOS/7/SRPMS
 RUN createrepo .
-RUN ncftpget -u $FTP_USERNAME -p $FTP_PASSWORD -R -DD $FTP_HOSTNAME /tmp/ /web/repo/qpid-dispatch-testing/
-RUN ncftpput -u $FTP_USERNAME -p $FTP_PASSWORD -R $FTP_HOSTNAME /web/repo/qpid-dispatch-testing/ /root/repo/*
+RUN ncftpget -u $FTP_USERNAME -p $FTP_PASSWORD -R -DD $FTP_HOSTNAME /tmp/ /web/repo/qpid-dispatch-stable/
+RUN ncftpput -u $FTP_USERNAME -p $FTP_PASSWORD -R $FTP_HOSTNAME /web/repo/qpid-dispatch-stable/ /root/repo/*
 
 # Nothing to run
 CMD    /bin/bash

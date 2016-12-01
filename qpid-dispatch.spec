@@ -18,7 +18,7 @@
 
 Name:          qpid-dispatch
 Version:       0.7.0
-Release:       RC22%{?dist}
+Release:       %{?dist}
 Summary:       Dispatch router for Qpid
 License:       ASL 2.0
 URL:           http://qpid.apache.org/
