@@ -12,7 +12,8 @@ ARG FTP_HOSTNAME
 # Install all dependencies
 USER root
 RUN yum -y install epel-release
-RUN yum -y install wget tar rpm-build rpmdevtools gcc cmake make libuuid-devel openssl-devel swig python-devel epydoc doxygen cyrus-sasl.x86_64 cyrus-sasl-devel.x86_64 cyrus-sasl-plain.x86_64 cyrus-sasl-md5.x86_64 createrepo ncftp libwebsockets libwebsockets-devel
+RUN yum -y install wget tar rpm-build rpmdevtools gcc cmake make libuuid-devel openssl-devel swig python-devel epydoc doxygen cyrus-sasl.x86_64 cyrus-sasl-devel.x86_64 cyrus-sasl-plain.x86_64 cyrus-sasl-md5.x86_64 createrepo ncftp
+#RUN yum -y install wget tar rpm-build rpmdevtools gcc cmake make libuuid-devel openssl-devel swig python-devel epydoc doxygen cyrus-sasl.x86_64 cyrus-sasl-devel.x86_64 cyrus-sasl-plain.x86_64 cyrus-sasl-md5.x86_64 createrepo ncftp libwebsockets libwebsockets-devel
 
 # Install Qpid Proton dependency
 RUN wget http://repo.effectivemessaging.com/qpid-proton-devel.repo -P /etc/yum.repos.d

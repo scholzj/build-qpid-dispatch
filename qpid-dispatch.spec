@@ -230,7 +230,6 @@ Requires: libqpid-dispatch%{?_isa} = %{version}-%{release}
        -DUSE_SETUP_PY=1 \
        -DQD_DOC_INSTALL_DIR=%{_pkgdocdir} \
        -DBUILD_DOCS=off \
-       -DCMAKE_CXX_FLAGS="-Wno-implicit" \
        .
 
 
