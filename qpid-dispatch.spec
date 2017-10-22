@@ -17,15 +17,13 @@
 %global proton_minimum_version 0.10
 
 Name:          qpid-dispatch
-Version:       0.9.0
+Version:       1.1.0
 Release:       SNAPSHOT%{?dist}
 Summary:       Dispatch router for Qpid
 License:       ASL 2.0
 URL:           http://qpid.apache.org/
 
 Source0:       qpid-dispatch-%{version}.tar.gz
-Patch0001:     0001-NO-JIRA-Systemd-control-file-for-qdrouterd.patch
-Patch0002:     0002-NO-JIRA-new-SysVInit-script-for-qdrouterd-from-Alan-.patch
 
 BuildRequires: qpid-proton-c-devel >= %{proton_minimum_version}
 BuildRequires: python-devel
@@ -211,17 +209,6 @@ Requires: libqpid-dispatch%{?_isa} = %{version}-%{release}
 
 %prep
 %setup -q
-
-%if %{_use_systemd}
-
-%patch0001 -p1
-
-%else
-
-%patch0002 -p1
-
-%endif
-
 
 
 %build

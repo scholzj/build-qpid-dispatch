@@ -1,6 +1,6 @@
 # DISPATCH
 #
-# VERSION               0.0.1
+# VERSION               1.1.0
 
 FROM		centos:centos7
 MAINTAINER 	JAkub Scholz "www@scholzj.com"
@@ -25,11 +25,9 @@ ADD ./qpid-dispatch.spec /root/rpmbuild/SPECS/qpid-dispatch.spec
 WORKDIR /root/rpmbuild/SOURCES
 RUN wget https://github.com/apache/qpid-dispatch/archive/master.tar.gz
 RUN tar -xf master.tar.gz
-RUN mv qpid-dispatch-master/ qpid-dispatch-0.9.0/
-RUN tar -z -cf qpid-dispatch-0.9.0.tar.gz qpid-dispatch-0.9.0/
-RUN rm -rf master.tar.gz qpid-dispatch-0.9.0/
-ADD ./0001-NO-JIRA-Systemd-control-file-for-qdrouterd.patch /root/rpmbuild/SOURCES/0001-NO-JIRA-Systemd-control-file-for-qdrouterd.patch
-ADD ./0002-NO-JIRA-new-SysVInit-script-for-qdrouterd-from-Alan-.patch /root/rpmbuild/SOURCES/0002-NO-JIRA-new-SysVInit-script-for-qdrouterd-from-Alan-.patch
+RUN mv qpid-dispatch-master/ qpid-dispatch-1.1.0/
+RUN tar -z -cf qpid-dispatch-1.1.0.tar.gz qpid-dispatch-1.1.0/
+RUN rm -rf master.tar.gz qpid-dispatch-1.1.0/
 WORKDIR /root/rpmbuild/SPECS
 RUN rpmbuild -ba qpid-dispatch.spec
 
