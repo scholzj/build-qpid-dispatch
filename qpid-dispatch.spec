@@ -227,13 +227,13 @@ Requires: libqpid-dispatch%{?_isa} = %{version}-%{release}
 %if %{_use_systemd}
 
 mkdir -p %{buildroot}/%{_unitdir}
-install -pm 644 %{_builddir}/qpid-dispatch-%{version}/etc/qdrouterd.service \
+install -pm 644 %{_builddir}/qpid-dispatch-%{version}/etc/fedora/qdrouterd.service \
                 %{buildroot}/%{_unitdir}
 
 %else
 
 mkdir -p %{buildroot}/%{_initrddir}
-install -pm 755 %{_builddir}/qpid-dispatch-%{version}/etc/qdrouterd \
+install -pm 755 %{_builddir}/qpid-dispatch-%{version}/etc/fedora/qdrouterd \
                 %{buildroot}/%{_initrddir}
 
 %endif
