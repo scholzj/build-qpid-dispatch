@@ -23,11 +23,11 @@ RUN yum -y install qpid-proton-c qpid-proton-c-devel python-qpid-proton
 RUN rpmdev-setuptree
 ADD ./qpid-dispatch.spec /root/rpmbuild/SPECS/qpid-dispatch.spec
 WORKDIR /root/rpmbuild/SOURCES
-RUN wget https://github.com/apache/qpid-dispatch/archive/1.0.0-rc1.tar.gz
-RUN tar -xf 1.0.0-rc1.tar.gz
-RUN mv qpid-dispatch-1.0.0-rc1/ qpid-dispatch-1.0.0/
+RUN wget https://github.com/apache/qpid-dispatch/archive/1.0.0-rc3.tar.gz
+RUN tar -xf 1.0.0-rc3.tar.gz
+RUN mv qpid-dispatch-1.0.0-rc3/ qpid-dispatch-1.0.0/
 RUN tar -z -cf qpid-dispatch-1.0.0.tar.gz qpid-dispatch-1.0.0/
-RUN rm -rf 1.0.0-rc1.tar.gz qpid-dispatch-1.0.0/
+RUN rm -rf 1.0.0-rc3.tar.gz qpid-dispatch-1.0.0/
 ADD ./0001-NO-JIRA-Systemd-control-file-for-qdrouterd.patch /root/rpmbuild/SOURCES/0001-NO-JIRA-Systemd-control-file-for-qdrouterd.patch
 ADD ./0002-NO-JIRA-new-SysVInit-script-for-qdrouterd-from-Alan-.patch /root/rpmbuild/SOURCES/0002-NO-JIRA-new-SysVInit-script-for-qdrouterd-from-Alan-.patch
 WORKDIR /root/rpmbuild/SPECS
