@@ -17,7 +17,7 @@
 %global proton_minimum_version 0.10
 
 Name:          qpid-dispatch
-Version:       0.8.0
+Version:       0.8.1
 Release:       1%{?dist}
 Summary:       Dispatch router for Qpid
 License:       ASL 2.0
