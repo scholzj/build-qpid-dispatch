@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/scholzj/build-qpid-dispatch.svg?branch=master)](https://travis-ci.org/scholzj/build-qpid-dispatch)
+[![CircleCI](https://circleci.com/gh/scholzj/build-qpid-dispatch.svg?style=shield)](https://circleci.com/gh/scholzj/build-qpid-dispatch)
 
 # Apache Qpid Dispatch build pipeline
 
