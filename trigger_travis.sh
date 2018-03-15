@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # First argument: Autntication toke for Travic-CI
 # Second argument: GitHub organization / user
@@ -16,7 +16,7 @@ fi
 
 body="{
 \"request\": {
-  \"message\": \"Triggered per request from ${TRAVIS_REPO_SLUG}\",
+  \"message\": \"Triggered per request from ${CIRCLE_BUILD_URL}\",
   \"branch\": \"${GITHUB_BRANCH}\"
   }
 }"
