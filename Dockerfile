@@ -15,11 +15,11 @@ RUN yum -y install qpid-proton-c qpid-proton-c-devel python-qpid-proton
 RUN rpmdev-setuptree
 ADD ./qpid-dispatch.spec /root/rpmbuild/SPECS/qpid-dispatch.spec
 WORKDIR /root/rpmbuild/SOURCES
-RUN wget https://github.com/apache/qpid-dispatch/archive/1.1.0-rc2.tar.gz
-RUN tar -xf 1.1.0-rc2.tar.gz
-RUN mv qpid-dispatch-1.1.0-rc2/ qpid-dispatch-1.1.0/
+RUN wget https://github.com/apache/qpid-dispatch/archive/1.1.0-rc4.tar.gz
+RUN tar -xf 1.1.0-rc4.tar.gz
+RUN mv qpid-dispatch-1.1.0-rc4/ qpid-dispatch-1.1.0/
 RUN tar -z -cf qpid-dispatch-1.1.0.tar.gz qpid-dispatch-1.1.0/
-RUN rm -rf 1.1.0-rc2.tar.gz qpid-dispatch-1.1.0/
+RUN rm -rf 1.1.0-rc4.tar.gz qpid-dispatch-1.1.0/
 WORKDIR /root/rpmbuild/SPECS
 RUN rpmbuild -ba qpid-dispatch.spec
 
