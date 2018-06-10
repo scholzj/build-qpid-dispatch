@@ -68,7 +68,7 @@ Requires: qpid-proton-c%{?_isa} >= %{proton_minimum_version}
 #%{_libdir}/libqpid-dispatch.so.*
 %{_exec_prefix}/lib/qpid-dispatch/libqpid-dispatch.so
 %{_exec_prefix}/lib/qpid-dispatch
-%exclude %{_exec_prefix}/lib/qpid-dispatch/tests
+#%exclude %{_exec_prefix}/lib/qpid-dispatch/tests
 %{python_sitelib}/qpid_dispatch_site.py*
 %{python_sitelib}/qpid_dispatch
 %exclude %{python_sitelib}/*egg-info
@@ -115,7 +115,7 @@ Requires(postun): systemd
 
 %files router
 %{_sbindir}/qdrouterd
-%{_datadir}/qpid-dispatch/console
+#%{_datadir}/qpid-dispatch/console
 %config(noreplace) %{_sysconfdir}/qpid-dispatch/qdrouterd.conf
 %config(noreplace) %{_sysconfdir}/sasl2/qdrouterd.conf
 
