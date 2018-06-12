@@ -8,18 +8,15 @@ ARG FTP_HOSTNAME
 USER root
 
 # Install Qpid Proton dependency
-RUN wget http://repo.effectivemessaging.com/qpid-proton-testing.repo -P /etc/yum.repos.d
+RUN wget http://repo.effectivemessaging.com/qpid-proton-stable.repo -P /etc/yum.repos.d
 RUN yum -y install qpid-proton-c qpid-proton-c-devel python-qpid-proton
 
 # Create the RPMs
 RUN rpmdev-setuptree
 ADD ./qpid-dispatch.spec /root/rpmbuild/SPECS/qpid-dispatch.spec
 WORKDIR /root/rpmbuild/SOURCES
-RUN wget https://github.com/apache/qpid-dispatch/archive/1.1.0-rc6.tar.gz
-RUN tar -xf 1.1.0-rc6.tar.gz
-RUN mv qpid-dispatch-1.1.0-rc6/ qpid-dispatch-1.1.0/
-RUN tar -z -cf qpid-dispatch-1.1.0.tar.gz qpid-dispatch-1.1.0/
-RUN rm -rf 1.1.0-rc6.tar.gz qpid-dispatch-1.1.0/
+RUN wget https://github.com/apache/qpid-dispatch/archive/1.1.0.tar.gz
+RUN mv 1.1.0.tar.gz qpid-dispatch-1.1.0.tar.gz
 WORKDIR /root/rpmbuild/SPECS
 RUN rpmbuild -ba qpid-dispatch.spec
 
@@ -33,8 +30,8 @@ WORKDIR /root/repo/CentOS/7/x86_64/
 RUN createrepo .
 WORKDIR /root/repo/CentOS/7/SRPMS
 RUN createrepo .
-RUN ncftpget -u $FTP_USERNAME -p $FTP_PASSWORD -R -DD $FTP_HOSTNAME /tmp/ /web/repo/qpid-dispatch-testing/
-RUN ncftpput -u $FTP_USERNAME -p $FTP_PASSWORD -R $FTP_HOSTNAME /web/repo/qpid-dispatch-testing/ /root/repo/*
+RUN ncftpget -u $FTP_USERNAME -p $FTP_PASSWORD -R -DD $FTP_HOSTNAME /tmp/ /web/repo/qpid-dispatch-stable/
+RUN ncftpput -u $FTP_USERNAME -p $FTP_PASSWORD -R $FTP_HOSTNAME /web/repo/qpid-dispatch-stable/ /root/repo/*
 
 # Nothing to run
 CMD    /bin/bash
