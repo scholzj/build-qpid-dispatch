@@ -8,7 +8,7 @@ ARG FTP_HOSTNAME
 USER root
 
 # Install Qpid Proton dependency
-RUN wget http://repo.effectivemessaging.com/qpid-proton-testing.repo -P /etc/yum.repos.d
+RUN wget http://repo.effectivemessaging.com/qpid-proton-devel.repo -P /etc/yum.repos.d
 RUN yum -y install qpid-proton-c qpid-proton-c-devel python-qpid-proton
 
 # Create the RPMs
