@@ -17,9 +17,9 @@ ADD ./qpid-dispatch.spec /root/rpmbuild/SPECS/qpid-dispatch.spec
 WORKDIR /root/rpmbuild/SOURCES
 RUN wget https://github.com/apache/qpid-dispatch/archive/master.tar.gz
 RUN tar -xf master.tar.gz
-RUN mv qpid-dispatch-master/ qpid-dispatch-1.6.0/
-RUN tar -z -cf qpid-dispatch-1.6.0.tar.gz qpid-dispatch-1.6.0/
-RUN rm -rf master.tar.gz qpid-dispatch-1.6.0/
+RUN mv qpid-dispatch-master/ qpid-dispatch-1.7.0/
+RUN tar -z -cf qpid-dispatch-1.7.0.tar.gz qpid-dispatch-1.7.0/
+RUN rm -rf master.tar.gz qpid-dispatch-1.7.0/
 WORKDIR /root/rpmbuild/SPECS
 RUN rpmbuild -ba qpid-dispatch.spec
 
